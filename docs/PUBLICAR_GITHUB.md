@@ -1,8 +1,12 @@
 # Publicar no GitHub
 
 Repositório: **https://github.com/consultorimoveispt-ctrl/seular.git**
-(`main`, público, criado em 07/11/2026). O projeto local já está inicializado
-com `origin` apontando para ele e com o primeiro commit pronto.
+(`main`, público, criado em 07/11/2026).
+
+> ✅ **PUBLICADO** em 07/11/2026 · commit inicial `53c7201` · **106 arquivos** ·
+> CI `CI / validar` = **success**. `.env` e bancos locais não estão no remoto.
+> Para novos commits: `git add -A && git commit -m "..." && ./publicar.sh`
+> (com `GITHUB_TOKEN`) ou `./publicar-ssh.sh` (com a deploy key).
 
 ## O que vai para o repositório
 
