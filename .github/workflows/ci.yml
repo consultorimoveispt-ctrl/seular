@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sintaxe dos servidores e scripts Python
+        run: python -m py_compile server.py server_supabase.py docs/*.py
+
+      - name: Sintaxe do frontend
+        run: |
+          node --check public/boot.js
+          node --check public/admin.js
+
+      - name: HTML offline é realmente autônomo
+        run: |
+          python - <<'PY'
+          s = open('ABRIR_APP.html', encoding='utf-8').read()
+          assert 'type="module"' not in s, 'ainda há módulos ES'
+          assert 'importmap' not in s, 'ainda há import map'
+          assert 'data:text/javascript' not in s, 'ainda há módulos data:'
+          assert 'src="http' not in s, 'ainda há recurso externo'
+          print('OK:', len(s), 'bytes, zero módulos, sem rede')
+          PY
+
+      - name: Nenhum segredo versionado
+        run: |
+          # Padrão montado em duas partes para o próprio workflow não casar.
+          PATTERN="eyJ""hbGciOiJIUzI1Ni"
+          if grep -rIl --exclude-dir=.git "$PATTERN" . ; then
+            echo "::error::Chave JWT encontrada em arquivo versionado"; exit 1
+          fi
+          test ! -f .env && echo "OK: nenhuma chave JWT e .env não versionado"

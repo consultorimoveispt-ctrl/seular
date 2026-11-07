@@ -1,0 +1,154 @@
+<!doctype html>
+<!-- vivaz — o CRM imobiliário para corretores — © 2026 Hasib (OVERSHOOT). Todos os direitos reservados. Licenciado, não vendido: consulte LICENSE.md. -->
+<html lang="pt-BR" data-theme="light">
+
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Vivaz — o CRM imobiliário para corretores</title>
+  <meta name="description"
+    content="vivaz é um CRM imobiliário completo: imóveis à venda e para alugar, página do imóvel com medidor de preço ao vivo, plantas que se desenham sozinhas e uma cadeia de passagem de bastão da equipe, quadro de negócios com arrastar e soltar, oportunidades pontuadas, contatos e um chat ao vivo com notas de voz — claro e escuro, totalmente animado." />
+  <meta name="theme-color" content="#eef0f4" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="vivaz — o CRM imobiliário para corretores" />
+  <meta property="og:description"
+    content="Imóveis, propostas, oportunidades e chat com clientes em um painel imobiliário calmo e animado." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet" />
+
+  <script>
+    /* Before first paint: the saved theme and chat width, so the page never
+       flashes the wrong look. The shell is hidden only under html.js; the
+       failsafe shows it if the script never runs. Under ?record the page
+       waits for the rig and ignores saved choices. */
+    (function (d) {
+      d.classList.add('js');
+      var rec = /[?&]record\b/.test(location.search);
+      if (rec) d.classList.add('is-record');
+      try {
+        if (!rec) {
+          var t = JSON.parse(localStorage.getItem('vivaz:theme') || '"light"');
+          d.dataset.theme = t === 'system' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : t;
+          if (localStorage.getItem('vivaz:chat') === 'min') d.classList.add('chat-min');
+        }
+      } catch (e) { }
+      if (!rec) setTimeout(function () { d.classList.add('failsafe'); }, 4000);
+    })(document.documentElement);
+  </script>
+  <style>html.js:not(.failsafe):not(.is-ready) .app,html.js:not(.failsafe):not(.is-ready) .mesh,html.js:not(.failsafe):not(.is-ready) .toast{visibility:hidden!important;opacity:0!important}</style>
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+
+  <script type="module" crossorigin src="/assets/index-hGLYjae8.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/gsap-DWdTjTel.js">
+  <link rel="modulepreload" crossorigin href="/assets/motion-DxK6gjgl.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-BUdVzp_j.css">
+</head>
+
+<body>
+  <div class="mesh" aria-hidden="true"><i class="mesh__a"></i><i class="mesh__b"></i><i class="mesh__c"></i></div>
+
+  <div class="app">
+    <div class="work">
+      <header class="top">
+        <a class="brand" href="#/overview" aria-label="vivaz — visão geral">
+          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24">
+              <path d="M3.5 20.5V9.5L12 3.5l8.5 6v11" />
+              <path d="M3.5 9.5h17M9 20.5v-6h6v6" />
+            </svg></span>
+          <span class="brand__text">vivaz</span>
+        </a>
+        <nav class="tabs" aria-label="Principal">
+          <div class="tabs__track">
+            <a class="tab" href="#/overview" data-route="overview">Visão geral</a>
+            <a class="tab" href="#/rentals" data-route="rentals">Aluguéis</a>
+            <a class="tab" href="#/sales" data-route="sales">Vendas</a>
+            <a class="tab" href="#/deals" data-route="deals">Negócios</a>
+            <a class="tab" href="#/leads" data-route="leads">Oportunidades<b class="tab__n" data-count-leads
+                hidden></b></a>
+            <a class="tab" href="#/contacts" data-route="contacts">Contatos</a>
+            <!-- The ink pill is a clipped layer holding a light copy of the labels:
+                 its two edges move on their own, so it stretches without ever
+                 scaling, and the label colour changes exactly at its edge. -->
+            <span class="tabs__pill" aria-hidden="true"></span>
+          </div>
+        </nav>
+        <div class="top__tools">
+          <button type="button" class="ibtn ibtn--glass magnetic" data-act="search" aria-label="Buscar (⌘K)"
+            title="Buscar  ⌘K"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" />
+              <path d="m16 16 4 4" />
+            </svg></button>
+          <button type="button" class="ibtn ibtn--glass magnetic top__chat" data-act="chat"
+            aria-label="Abrir chat ao vivo" title="Chat ao vivo"><svg class="ico" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path d="M4.5 18.5v-11a3 3 0 0 1 3-3h9a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-7.5z" />
+              <path d="M8.5 9.5h7M8.5 12.5h4" />
+            </svg><span class="num-badge" data-chat-badge hidden></span></button>
+          <button type="button" class="ibtn ibtn--glass magnetic" data-act="bell" id="btn-bell"
+            aria-label="Notificações" title="Notificações" aria-haspopup="dialog" aria-expanded="false"><svg class="ico"
+              viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15z" />
+              <path d="M10 20.5a2 2 0 0 0 4 0" />
+            </svg><span class="dot-badge" id="bell-badge" hidden></span></button>
+          <button type="button" class="ibtn ibtn--glass magnetic theme-btn" data-act="theme"
+            aria-label="Mudar para o tema escuro" title="Tema"><svg class="ico ico--moon" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10Z" />
+            </svg><svg class="ico ico--sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path
+                d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4" />
+            </svg></button>
+          <button type="button" class="me magnetic" id="btn-me" aria-label="Menu da conta" aria-haspopup="menu"
+            aria-expanded="false"><img src="/vivaz/photos/175-vivaz/imani-brooks-sm.jpg" width="38" height="38"
+              alt="" /></button>
+        </div>
+      </header>
+
+      <main id="main" class="main">
+        <section class="view" data-view="overview" hidden></section>
+        <section class="view" data-view="rentals" hidden></section>
+        <section class="view" data-view="sales" hidden></section>
+        <section class="view" data-view="deals" hidden></section>
+        <section class="view" data-view="leads" hidden></section>
+        <section class="view" data-view="contacts" hidden></section>
+        <section class="view" data-view="property" hidden></section>
+      </main>
+    </div>
+
+    <aside class="chat" id="chat" aria-label="Chat ao vivo"></aside>
+  </div>
+
+  <div class="scrim" aria-hidden="true"></div>
+  <div class="pop-layer"></div>
+
+  <dialog class="finder" id="finder" aria-label="Buscar no vivaz">
+    <div class="finder__bar">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5" />
+        <path d="m16 16 4 4" />
+      </svg>
+      <input id="finder-q" type="text" role="combobox" aria-expanded="true" aria-controls="finder-list"
+        aria-autocomplete="list" placeholder="Buscar imóveis, pessoas, páginas…" autocomplete="off"
+        spellcheck="false" />
+      <kbd>esc</kbd>
+    </div>
+    <ul class="finder__list" id="finder-list" role="listbox" aria-label="Resultados"></ul>
+  </dialog>
+  <dialog class="modal" id="modal"></dialog>
+  <dialog class="drawer" id="drawer"></dialog>
+  <dialog class="lightbox" id="lightbox" aria-label="Fotos"></dialog>
+
+  <div class="toast" role="status" aria-live="polite">
+    <span class="toast__ico"></span><span class="toast__msg"></span>
+    <button type="button" class="toast__undo" hidden>Desfazer</button>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+# ---- Segredos (NUNCA versionar) -------------------------------------------
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+
+# ---- Bancos locais: dados de usuários + tokens de sessão -------------------
+data/*.db
+data/*.db-*
+data/*.sqlite
+data/*.sqlite-*
+*.db
+*.db-wal
+*.db-shm
+
+# ---- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# ---- Node (ferramentas de build ficam fora do repo) ------------------------
+node_modules/
+.local/
+
+# ---- Temporários / diagnósticos -------------------------------------------
+docs/debug-*.png
+docs/.supabase_photo_base
+*.log
+.DS_Store
+Thumbs.db
