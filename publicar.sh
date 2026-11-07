@@ -2,7 +2,7 @@
 # Publica o VIVAZ no GitHub. O token NÃO é gravado em nenhum arquivo:
 # é enviado apenas como header HTTP durante este push.
 #
-#   GITHUB_TOKEN=ghp_xxx ./publicar.sh
+#   GITHUB_TOKEN=seu_token ./publicar.sh
 #
 # Token: GitHub → Settings → Developer settings → Personal access tokens
 #        → Fine-grained tokens → Contents: read AND write + Workflows: read AND
